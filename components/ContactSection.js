@@ -19,7 +19,7 @@ const ContactSection = () => {
           </li>
           <li className="flex items-center">
             <Linkedin size={20} className="text-emerald-400 mr-3" />
-            <a href="https://www.linkedin.com/in/mohammad-mawed" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-emerald-300 transition-colors text-sm sm:text-base">
+            <a href="https://www.linkedin.com/in/mohammad-mawed-a357341b5/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-emerald-300 transition-colors text-sm sm:text-base">
               Mohammad Mawed
             </a>
           </li>
