@@ -1,14 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Globe, Code } from 'lucide-react';
+import TechStackIcon from './TechStackIcon';
 
-const ProjectCard = ({ title, description, link, image }) => {
+const ProjectCard = ({ title, description, link, previewComponent: PreviewComponent, techStack, codePreview }) => {
+  const [showPreview, setShowPreview] = useState(false);
+
   return (
-    <div className="bg-slate-700 border border-teal-600 rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300">
-      <img src={image} alt={title} className="w-full h-48 object-cover" />
-      <div className="p-4">
-        <h2 className="text-xl font-semibold text-teal-400">{title}</h2>
-        <p className="mt-2 text-gray-200">{description}</p>
-        <a href={link} className="block mt-4 text-teal-400 hover:underline">View Project</a>
+    <div className="bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-emerald-500/20 hover:shadow-lg">
+      <div className="h-48 bg-gray-700 flex items-center justify-center overflow-hidden">
+        <PreviewComponent />
       </div>
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-emerald-400 mb-2">{title}</h3>
+        {/* Ensure description is wrapped in a <div> to avoid hydration errors */}
+        <div className="text-gray-300 mb-4">{description}</div> {/* Changed <p> to <div> */}
+        <div className="flex flex-wrap mb-4">
+          {techStack.map((tech, index) => (
+            <TechStackIcon key={index} icon={tech.icon} tech={tech.name} />
+          ))}
+        </div>
+        <div className="flex justify-between items-center">
+          <a href={link} className="text-emerald-400 hover:text-emerald-300 inline-flex items-center">
+            View Project <Globe className="ml-2" size={16} />
+          </a>
+          <button
+            onClick={() => setShowPreview(!showPreview)}
+            className="text-emerald-400 hover:text-emerald-300 inline-flex items-center"
+          >
+            {showPreview ? 'Hide' : 'Show'} Code <Code className="ml-2" size={16} />
+          </button>
+        </div>
+      </div>
+      {showPreview && (
+        <div className="bg-gray-900 p-4 border-t border-gray-700">
+          <pre className="text-sm text-gray-300 overflow-x-auto">
+            <code>{codePreview}</code>
+          </pre>
+        </div>
+      )}
     </div>
   );
 };
