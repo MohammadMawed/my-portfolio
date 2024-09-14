@@ -10,10 +10,9 @@ const ProjectCard = ({ title, description, link, previewComponent: PreviewCompon
       <div className="h-48 bg-gray-700 flex items-center justify-center overflow-hidden">
         <PreviewComponent />
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-emerald-400 mb-2">{title}</h3>
-        {/* Ensure description is wrapped in a <div> to avoid hydration errors */}
-        <div className="text-gray-300 mb-4">{description}</div> {/* Changed <p> to <div> */}
+      <div className="p-4 sm:p-6">
+        <h3 className="text-lg sm:text-xl font-bold text-emerald-400 mb-2">{title}</h3>
+        <div className="text-gray-300 mb-4">{description}</div>
         <div className="flex flex-wrap mb-4">
           {techStack.map((tech, index) => (
             <TechStackIcon key={index} icon={tech.icon} tech={tech.name} />
@@ -41,5 +40,6 @@ const ProjectCard = ({ title, description, link, previewComponent: PreviewCompon
     </div>
   );
 };
+
 
 export default ProjectCard;
