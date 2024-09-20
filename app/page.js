@@ -238,34 +238,11 @@ export default function Portfolio() {
         { icon: Server, name: 'Node.js' },
         { icon: Database, name: 'Firebase' },
       ],
-      codePreview: `
-        // OrderComponent.js
-        import React, { useState, useEffect } from 'react';
-        import { useFirebase } from '../contexts/FirebaseContext';
-  
-        export const OrderComponent = () => {
-          const [orders, setOrders] = useState([]);
-          const { db } = useFirebase();
-  
-          useEffect(() => {
-            const unsubscribe = db.collection('orders')
-              .onSnapshot(snapshot => {
-                const orderData = snapshot.docs.map(doc => ({
-                  id: doc.id,
-                  ...doc.data()
-                }));
-                setOrders(orderData);
-              });
-  
-            return () => unsubscribe();
-          }, [db]);
-  
-          // Render orders...
-        };
+      codePreview: `// Code snippet here,
       `,
     },
     {
-      title: 'AI Software Engineering Intern Replacement',
+      title: 'AI Software Engineering Assistant',
       description: (
         <div>
           <p><strong>- Developed an AI assistant using Python and OpenAI's GPT-4, automating software development tasks and increasing coding efficiency by 40%.</strong></p>
@@ -275,7 +252,7 @@ export default function Portfolio() {
           <p><strong>- Established a continuous feedback loop by collecting user inputs and AI outputs, enabling ongoing improvement and retraining of the RL agent, leading to more accurate task completion.</strong></p>
         </div>
       ),
-      link: '#', // Replace with actual link when available
+      link: 'https://github.com/MohammadMawed/AI-Software-Engineering-Assistant', // Replace with actual link when available
       previewComponent: AIAssistantPreview,
       techStack: [
         { icon: BrainCog, name: 'GPT-4' },
