@@ -12,6 +12,32 @@ import { Coffee, Code, FileJson, Hash, Globe, Server, Database, Cpu, BrainCog, C
 
 export default function Portfolio() {
 
+  const AIAssistantPreview = () => (
+    <div className="w-full h-full bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center p-4">
+      <div className="bg-white rounded-lg shadow-md p-4 max-w-sm w-full">
+        <div className="text-center mb-4 font-bold text-gray-800">AI Software Engineering Assistant</div>
+        <div className="space-y-2 mb-4">
+          <div className="bg-gray-100 p-2 rounded-lg flex items-center">
+            <BrainCog className="text-blue-500 mr-2" />
+            <div className="text-sm text-gray-800">Task Automation: +40% Efficiency</div>
+          </div>
+          <div className="bg-gray-100 p-2 rounded-lg flex items-center">
+            <Terminal className="text-green-500 mr-2" />
+            <div className="text-sm text-gray-800">Code Errors: -25%</div>
+          </div>
+          <div className="bg-gray-100 p-2 rounded-lg flex items-center">
+            <Code className="text-purple-500 mr-2" />
+            <div className="text-sm text-gray-800">Performance Improvement: +35%</div>
+          </div>
+        </div>
+        <div className="flex justify-between">
+          <button className="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Run Task</button>
+          <button className="bg-green-500 text-white px-3 py-1 rounded-lg text-sm">Analyze Code</button>
+        </div>
+      </div>
+    </div>
+  );
+
   // Sample project preview components
   const TwitterPreview = () => (
     <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
@@ -239,6 +265,27 @@ export default function Portfolio() {
       `,
     },
     {
+      title: 'AI Software Engineering Intern Replacement',
+      description: (
+        <div>
+          <p><strong>- Developed an AI assistant using Python and OpenAI's GPT-4, automating software development tasks and increasing coding efficiency by 40%.</strong></p>
+          <p><strong>- Implemented a reinforcement learning algorithm with SQLite database integration, enabling the AI to learn from past interactions and improve performance over time by 35%.</strong></p>
+          <p><strong>- Engineered a robust database schema to store code versions, requests, and RL data, preventing data overwriting and facilitating detailed performance analysis.</strong></p>
+          <p><strong>- Integrated code validation and testing features, including automated linting and unit tests, reducing code errors by 25% and enhancing code quality.</strong></p>
+          <p><strong>- Established a continuous feedback loop by collecting user inputs and AI outputs, enabling ongoing improvement and retraining of the RL agent, leading to more accurate task completion.</strong></p>
+        </div>
+      ),
+      link: '#', // Replace with actual link when available
+      previewComponent: AIAssistantPreview,
+      techStack: [
+        { icon: BrainCog, name: 'GPT-4' },
+        { icon: Terminal, name: 'Python' },
+        { icon: FileJson, name: 'OpenAI API' },
+        { icon: Database, name: 'SQLite' },
+      ],
+      codePreview:"",
+    },
+    {
       title: 'PureInvoice: Node.js Billing & Payments App',
       description: (
         <div>
@@ -258,30 +305,8 @@ export default function Portfolio() {
         { icon: Server, name: 'Express' },
         { icon: Cloud, name: 'Stripe' },
       ],
-      codePreview: `
-        // server.js
-        const express = require('express');
-        const bodyParser = require('body-parser');
-        const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-  
-        const app = express();
-        app.use(bodyParser.json());
-  
-        app.post('/create-payment-intent', async (req, res) => {
-          const { amount } = req.body;
-  
-          const paymentIntent = await stripe.paymentIntents.create({
-            amount,
-            currency: 'eur',
-          });
-  
-          res.send({
-            clientSecret: paymentIntent.client_secret,
-          });
-        });
-  
-        app.listen(3000, () => console.log('Server running on port 3000'));
-      `,
+      codePreview: 
+        "",
     },
     {
       title: 'Twitter-like: AI-Enhanced Social Engagement Platform',
@@ -302,14 +327,7 @@ export default function Portfolio() {
         { icon: Cpu, name: 'Machine Learning' },
       ],
       codePreview: `
-        # views.py
-        class TweetViewSet(viewsets.ModelViewSet):
-            queryset = Tweet.objects.all()
-            serializer_class = TweetSerializer
-            permission_classes = [IsAuthenticatedOrReadOnly]
-        
-            def perform_create(self, serializer):
-                serializer.save(user=self.request.user)
+    
       `,
     },
     {
